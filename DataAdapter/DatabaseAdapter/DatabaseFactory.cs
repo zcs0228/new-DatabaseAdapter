@@ -93,7 +93,7 @@ namespace DatabaseAdapter
         {
             int result = 0;
 
-            using (SqlConnection conn = new SqlConnection(ConnectionString))
+            using (SqlConnection conn = new SqlConnection(_connectionString))
             {
                 SqlCommand cmd = conn.CreateCommand();
                 cmd.CommandText = sqlString;
@@ -133,7 +133,7 @@ namespace DatabaseAdapter
         {
             DataTable result = new DataTable();
 
-            using (SqlConnection conn = new SqlConnection(ConnectionString))
+            using (SqlConnection conn = new SqlConnection(_connectionString))
             {
                 SqlCommand cmd = conn.CreateCommand();
                 cmd.CommandText = queryString;
@@ -162,7 +162,7 @@ namespace DatabaseAdapter
         {
             int affected = 0;
 
-            using (SqlConnection conn = new SqlConnection(ConnectionString))
+            using (SqlConnection conn = new SqlConnection(_connectionString))
             {
                 conn.Open();
                 using (SqlTransaction transaction = conn.BeginTransaction())
@@ -196,7 +196,7 @@ namespace DatabaseAdapter
             int result;
             string[] columns = MSSQLHelper.GetDataTableColumnName(sourceTable, excludeColumnName);
 
-            using (SqlConnection conn = new SqlConnection(ConnectionString))
+            using (SqlConnection conn = new SqlConnection(_connectionString))
             {
                 conn.Open();
                 SqlTransaction transaction = conn.BeginTransaction();
@@ -231,7 +231,7 @@ namespace DatabaseAdapter
             int result;
             string[] columns = MSSQLHelper.GetDataTableColumnName(sourceTable, keyColumnName);
 
-            using (SqlConnection conn = new SqlConnection(ConnectionString))
+            using (SqlConnection conn = new SqlConnection(_connectionString))
             {
                 conn.Open();
                 SqlTransaction transaction = conn.BeginTransaction();
